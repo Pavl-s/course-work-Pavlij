@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://jknoyo2cdffa"]
+
+[ext_resource type="Texture2D" uid="uid://bdt0l6tpn54h6" path="res://oak_woods_v1.0/_Gold coin .png" id="1_38vhk"]
+[ext_resource type="Script" uid="uid://66khkl3d4f6l" path="res://Collectibles/gold.gd" id="1_fdg3j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1rsf5"]
+radius = 6.32456
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cdng"]
+atlas = ExtResource("1_38vhk")
+region = Rect2(0, 0, 78, 202)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bruw"]
+atlas = ExtResource("1_38vhk")
+region = Rect2(468, 0, 78, 202)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2oh6"]
+atlas = ExtResource("1_38vhk")
+region = Rect2(369, 0, 114, 218)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a43tj"]
+atlas = ExtResource("1_38vhk")
+region = Rect2(255, 0, 114, 218)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d01er"]
+atlas = ExtResource("1_38vhk")
+region = Rect2(155, 0, 90, 217)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ode16"]
+atlas = ExtResource("1_38vhk")
+region = Rect2(78, 0, 78, 202)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f06vk"]
+atlas = ExtResource("1_38vhk")
+region = Rect2(546, 0, 78, 202)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hvelo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cdng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bruw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2oh6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a43tj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d01er")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ode16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f06vk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 9.0
+}]
+
+[node name="gold" type="Area2D"]
+script = ExtResource("1_fdg3j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1rsf5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -4)
+scale = Vector2(0.152187, 0.122667)
+sprite_frames = SubResource("SpriteFrames_hvelo")
+animation = &"idle"
+autoplay = "idle"
+frame = 3
+frame_progress = 0.328658
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
